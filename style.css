@@ -1,0 +1,81 @@
+@font-face { font-family: "PressStart"; src: url("PressStart2P-Regular.ttf"); font-display: swap; }
+@font-face { font-family: "VT323"; src: url("VT323-Regular.ttf"); font-display: swap; }
+
+:root {
+  --bg: #07091a;
+  --panel: #10142e;
+  --text: #ecebe4;
+  --muted: #a8a9c4;
+  --accent: #ff4646;
+  --second: #ffd23f;
+  --link: #7ee0ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* faint CRT scanlines over the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.18) 2px 3px);
+}
+
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+
+header.osd {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "VT323", monospace;
+  font-size: 26px;
+  color: #78ff8c;
+  border-bottom: 2px dashed #2a2f55;
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+}
+header.osd nav a { color: var(--text); margin-left: 16px; text-decoration: none; }
+header.osd nav a:hover { color: var(--second); }
+
+h1, h2 { font-family: "PressStart", monospace; line-height: 1.5; }
+h1 { color: var(--accent); font-size: 26px; text-shadow: 4px 4px 0 #000; margin: 0 0 16px; }
+h2 { color: var(--second); font-size: 14px; margin: 36px 0 12px; }
+
+a { color: var(--link); }
+p, li { color: var(--text); }
+.muted { color: var(--muted); font-size: 15px; }
+
+.hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.hero img { width: 180px; height: 180px; image-rendering: pixelated; border: 3px solid #2a2f55; }
+.hero .tag { font-family: "VT323", monospace; font-size: 28px; color: var(--second); margin: 0; }
+
+.card { background: var(--panel); border: 2px solid #2a2f55; padding: 20px 24px; margin-top: 28px; }
+.card h2:first-child { margin-top: 4px; }
+
+.button {
+  display: inline-block;
+  font-family: "PressStart", monospace;
+  font-size: 12px;
+  color: #000;
+  background: var(--second);
+  padding: 12px 16px;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 #000;
+  margin-top: 8px;
+}
+
+footer { margin-top: 56px; font-family: "VT323", monospace; font-size: 20px; color: var(--muted); }
+footer a { color: var(--muted); margin-right: 16px; }
+
+@media (max-width: 520px) {
+  h1 { font-size: 18px; }
+  .hero img { width: 140px; height: 140px; }
+}
